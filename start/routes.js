@@ -20,7 +20,7 @@ Route.get('/', () => {
   return { greeting: 'Seriable' }
 })
 
-Route.get('/generos',"GeneroController.index");
+Route.get('/generos','GeneroController.index');
 
 Route.post('/register','AuthController.register')
 Route.post('/authenticate','AuthController.authenticate')
