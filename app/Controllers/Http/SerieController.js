@@ -77,6 +77,11 @@ class SerieController {
     return serie
   }
 
+  async generos({ params, request, response, view }) {
+ 
+    const serie = await Serie.query().where("genero_id", params.id).fetch();
+    return serie;
+  }
   /**
    * Delete a serie with id.
    * DELETE series/:id
