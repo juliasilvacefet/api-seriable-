@@ -21,6 +21,7 @@ Route.get('/', () => {
 })
 
 Route.get('/generos','GeneroController.index');
+Route.get("/series/:id/genero", "SerieController.generos");
 
 Route.post('/register','AuthController.register')
 Route.post('/authenticate','AuthController.authenticate')
