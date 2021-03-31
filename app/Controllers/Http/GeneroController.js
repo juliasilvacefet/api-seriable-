@@ -34,9 +34,13 @@ class GeneroController {
    * @param {Response} ctx.response
    */
   async store ({ request}) {
+    try{
     const data = request.only(["nome"])
     const genero = await Genero.create(data)
     return genero
+    } catch (error) {
+      response.status(500).send("Erro ao inserir o genero!");
+    }
   }
 
   /**
@@ -64,6 +68,7 @@ class GeneroController {
    * @param {Response} ctx.response
    */
   async update ({ params, request, response }) {
+    try{
     const genero = await Genero.findOrFail(params.id)
     const {nome} = request.only(["nome"])
 
@@ -71,6 +76,9 @@ class GeneroController {
     await genero.save()
 
     return genero
+      } catch (error) {
+      response.status(500).send("Erro ao atualizar o genero!");
+    }
   }
 
   /**
@@ -82,9 +90,13 @@ class GeneroController {
    * @param {Response} ctx.response
    */
   async destroy ({ params}) {
+    try{
     const genero = await Genero.findOrFail(params.id)
     await genero.delete()
     return genero;
+      } catch (error) {
+      response.status(500).send("Erro ao apagar o genero!");
+    }
   }
 }
 
