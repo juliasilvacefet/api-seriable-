@@ -8,6 +8,13 @@ class Serie extends Model {
     genero(){
         return this.belongsTo("app/Models/Genero")
     }
+  
+  static get dates () {
+        return super.dates.concat(['lancamento'])
+      }
+
+     
+  
 }
 
 module.exports = Serie
