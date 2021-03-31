@@ -6,7 +6,7 @@ const Moment = use('moment')
 
 class Serie extends Model {
     genero(){
-        return this.belongsTo("app/Models/Genero")
+        return this.belongsTo("App/Models/Genero")
     }
   
   static get dates () {
