@@ -18,7 +18,7 @@ class SerieController {
    * @param {View} ctx.view
    */
   async index () {
-    const series = Serie.all()
+    const series = await Serie.query().with(["genero"]).fetch()
     return series
   }
 
