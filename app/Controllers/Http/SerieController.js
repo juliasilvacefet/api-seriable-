@@ -31,9 +31,13 @@ class SerieController {
    * @param {Response} ctx.response
    */
   async store ({ request }) {
+    try{
     const data = request.only(["nome","plataforma","descricao","temporadas","elenco","lancamento","genero_id"])
     const serie = await Serie.create(data)
     return serie
+      } catch (error) {
+      response.status(500).send("Erro ao inserir a serie!");
+    }
   }
 
   /**
@@ -60,6 +64,7 @@ class SerieController {
    * @param {Response} ctx.response
    */
   async update ({ params, request}) {
+    try{
     const serie = await Serie.findOrFail(params.id)
     const {nome,plataforma,descricao,temporadas,elenco,lancamento,genero_id} = request.only([
       "nome","plataforma","descricao","temporadas","elenco","lancamento","genero_id"
@@ -75,6 +80,9 @@ class SerieController {
     await serie.save()
 
     return serie
+      } catch (error) {
+      response.status(500).send("Erro ao atualizar a serie!");
+    }
   }
 
   async generos({ params, request, response, view }) {
@@ -91,9 +99,13 @@ class SerieController {
    * @param {Response} ctx.response
    */
   async destroy ({params}) {
+    try{
     const serie = await Serie.findOrFail(params.id)
     await serie.delete()
     return serie;
+      } catch (error) {
+      response.status(500).send("Erro ao apagar a serie!");
+    }
   }
 }
 
