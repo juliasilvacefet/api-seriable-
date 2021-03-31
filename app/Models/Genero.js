@@ -5,7 +5,7 @@ const Model = use('Model')
 
 class Genero extends Model {
     series(){
-        return this.hasMany("app/Models/Serie")
+        return this.hasMany("App/Models/Serie")
     }
 }
 
